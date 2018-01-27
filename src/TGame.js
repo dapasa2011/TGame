@@ -5,27 +5,48 @@
  */
 function TGame(container, options) {
 	console.log("Configuración del juego");
-	var params = options;
+	this.params = options;
 
 	// Crear el marco de juego
 	// FUTURE: Configurar aspecto del marco
-	var stageElement = document.createElement('pre');
+	this.stageElement = document.createElement('pre');
 	var stageStyle = {
 		outline: '1px dotted rgb(30,30,30)',
 		position: 'absolute',
-		width: params.width + 'px',
-		height: params.height + 'px',
+		width: this.params.width + 'px',
+		height: this.params.height + 'px',
 		top: '50%',
 		left: '50%',
-		marginLeft: '-' + (params.width / 2) + 'px',
-		marginTop: '-' + (params.height / 2) + 'px',
+		marginLeft: '-' + (this.params.width / 2) + 'px',
+		marginTop: '-' + (this.params.height / 2) + 'px',
 		fontFamily: 'monospace',
 		lineHeight: '1.05em'
 	}
 	for (var st in stageStyle) {
 		//console.log()
-		stageElement.style[st] = stageStyle[st];
+		this.stageElement.style[st] = stageStyle[st];
 	}
-	container.appendChild(stageElement);
+	container.appendChild(this.stageElement);
 
+	var _screen;
+
+	/// Antes del primer frame ///
+	var _init = function (g) {
+		// TODO: Colocar los elementos del juego
+		console.log('Colocar los elementos del juego');
+		console.log(g);
+		_screen = new TScreen(g);
+
+		_loop();
+	}
+
+	var _loop = function () {
+		// TODO: Entradas del usuario
+		// TODO: Lógica del juego
+		// TODO: Dibujar pantalla
+		_screen.draw();
+	}
+
+	// Ponemos el juego en marcha
+	_init(this);
 }
