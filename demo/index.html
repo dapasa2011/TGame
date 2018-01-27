@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Demo TGame</title>
+</head>
+
+<body>
+
+	<script src="../src/TScreen.js"></script>
+	<script src="../src/TGame.js"></script>
+	<script>
+		var stageParams = {
+			width: 900,
+			height: 600,
+			frameRate: 1000 / 25,
+			hPixels: 126,
+			vPixels: 46,
+		}
+
+		var game = new TGame(document.body, stageParams);
+	</script>
+</body>
+
+</html>
