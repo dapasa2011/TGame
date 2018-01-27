@@ -7,8 +7,9 @@
 </head>
 
 <body>
-
+	<!-- TODO: minimizar y comprimir los archivos js -->
 	<script src="../src/TScreen.js"></script>
+	<script src="../src/TGameObject.js"></script>
 	<script src="../src/TGame.js"></script>
 	<script>
 		var stageParams = {
@@ -20,6 +21,16 @@
 		}
 
 		var game = new TGame(document.body, stageParams);
+
+		var dot = new TGameObject();
+		var dot2 = new TGameObject(450, 300);
+
+		game.onStart = function() {
+			game.appendChild(dot);
+			game.appendChild(dot2);
+		}
+
+		game.init();
 	</script>
 </body>
 
