@@ -30,12 +30,28 @@ function TGame(container, options) {
 
 	var _screen;
 
+	var _childs = [];
+
+	this.appendChild = function (child) {
+		_childs.push(child);
+	}
+
+	this.getChildren = function () {
+		return _childs;
+	}
+
+	this.onStart = function () {
+
+	}
+
 	/// Antes del primer frame ///
 	var _init = function (g) {
 		// TODO: Colocar los elementos del juego
 		console.log('Colocar los elementos del juego');
 		console.log(g);
 		_screen = new TScreen(g);
+
+		g.onStart();
 
 		_loop();
 	}
@@ -47,6 +63,18 @@ function TGame(container, options) {
 		_screen.draw();
 	}
 
-	// Ponemos el juego en marcha
-	_init(this);
+	// Poner el juego en marcha
+	this.init = function () {
+		_init(this);
+	}
+
+	/////////////// UTILS ///////////////
+
+	this.horPixelsToLetters = function (pixels) {
+		return Math.min(Math.floor((pixels * stageParams.hPixels) / stageParams.width), stageParams.hPixels - 1);
+	}
+
+	this.verPixelsToLetters = function (pixels) {
+		return Math.min(Math.floor((pixels * stageParams.vPixels) / stageParams.height), stageParams.vPixels - 1);
+	}
 }
