@@ -48,7 +48,7 @@ function TGame(container, options) {
 	var _init = function (g) {
 		// TODO: Colocar los elementos del juego
 		console.log('Colocar los elementos del juego');
-		console.log(g);
+		//console.log(g);
 		_screen = new TScreen(g);
 
 		g.onStart();

@@ -23,9 +23,11 @@
 		var game = new TGame(document.body, stageParams);
 
 		var dot = new TGameObject();
+		var dot2 = new TGameObject(450, 300);
 
 		game.onStart = function() {
 			game.appendChild(dot);
+			game.appendChild(dot2);
 		}
 
 		game.init();

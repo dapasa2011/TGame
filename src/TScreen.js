@@ -43,7 +43,7 @@ var TScreen = function (tGame) {
 			if ((h >= 0 || h < _g.params.hPixels) && (v >= 0 || v < _g.params.vPixels)) {
 				try {
 					_screen[v] = _screen[v].replaceAt(h, _e[i].getShape());
-					console.log(_screen[v]);
+					//console.log(_screen[v]);
 				} catch (e) {
 					console.log('no se pudo dibujar', e, v, h);
 					// NOTE: gamePaused = true;

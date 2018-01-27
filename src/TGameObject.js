@@ -1,7 +1,7 @@
-function TGameObject() {
+function TGameObject(x = 0, y = 0) {
 	this.position = {
-		x: 0,
-		y: 0
+		x: x,
+		y: y
 	};
 
 	this.getShape = function () {
