@@ -29,10 +29,15 @@ function TGame(container, options) {
 	container.appendChild(this.stageElement);
 
 	var _screen;
-
+	var _input;
 	var _childs = [];
 
+	this.getInput = function () {
+		return _input;
+	}
+
 	this.appendChild = function (child) {
+		child.game = this;
 		_childs.push(child);
 	}
 
@@ -50,17 +55,35 @@ function TGame(container, options) {
 		console.log('Colocar los elementos del juego');
 		//console.log(g);
 		_screen = new TScreen(g);
+		_input = new TInput();
 
+		/// controlar el movimiento horizontal con ◄ y ►
+		_input.registerAxis(new InputAxis("H",
+			new KeyObject("ArrowRight"),
+			new KeyObject("ArrowLeft")));
+
+		/// controlar el movimiento horizontal con ▲ y ▼
+		_input.registerAxis(new InputAxis("V",
+			new KeyObject("ArrowDown"),
+			new KeyObject("ArrowUp")));
 		g.onStart();
 
-		_loop();
+		_loop(g);
 	}
 
-	var _loop = function () {
+	var _loop = function (g) {
 		// TODO: Entradas del usuario
+		_input.update();
 		// TODO: Lógica del juego
+		_childs.forEach(function (item) {
+			item.update(this);
+		});
 		// TODO: Dibujar pantalla
 		_screen.draw();
+
+		_input.reset();
+		//console.log(g.params);
+		setTimeout(_loop, g.params.frameRate, g);
 	}
 
 	// Poner el juego en marcha

@@ -34,7 +34,6 @@ var TScreen = function (tGame) {
 		clear();
 		// dibujar cada uno de los objetos
 		_e = _g.getChildren();
-		// FIXME: No se rellena el array _screen
 
 		for (var i = 0; i < _e.length; i++) {
 			var h = _g.horPixelsToLetters(_e[i].position.x);

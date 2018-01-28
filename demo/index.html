@@ -7,11 +7,16 @@
 </head>
 
 <body>
+
+	<pre id="output">output</pre>
 	<!-- TODO: minimizar y comprimir los archivos js -->
+	<script src="../src/TInput.js"></script>
 	<script src="../src/TScreen.js"></script>
 	<script src="../src/TGameObject.js"></script>
 	<script src="../src/TGame.js"></script>
 	<script>
+		var output = document.getElementById('output');
+
 		var stageParams = {
 			width: 900,
 			height: 600,
@@ -22,12 +27,15 @@
 
 		var game = new TGame(document.body, stageParams);
 
-		var dot = new TGameObject();
-		var dot2 = new TGameObject(450, 300);
+		var dot = new TGameObject(450, 300);
+		dot.onUpdate = function(g) {
+			//console.log(g.getInput());
+			this.position.x += (g.getInput().getAxis("H") * 10);
+			this.position.y += (g.getInput().getAxis("V") * 10);
+		}
 
 		game.onStart = function() {
 			game.appendChild(dot);
-			game.appendChild(dot2);
 		}
 
 		game.init();
